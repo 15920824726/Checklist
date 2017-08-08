@@ -1,0 +1,49 @@
+<div class="nav-side">
+    <header class="lheader" ng-click="setting.cancel()">
+        <i class="icon ion-ios-arrow-back fl ml20"></i>
+    </header>
+    <ion-nav-view>
+        <form name="setForm">
+            <ion-content class="menu-list has-tabs" delegate-handle="menu">
+                <ion-list>
+                    <ion-item class="item item-avatar nbt" >
+                        <img  ng-src="{{setting.userInfo.url}}" ng-click="openPopover($event)">
+                        <input type="text" placeholder="type" name="type" ng-model="setting.userInfo.name" required>
+                    </ion-item>
+                    <!--<ion-item class="item item-input item-stacked-label">
+                        <span class="input-label fb">type</span>
+                        <input type="text" placeholder="type" name="type" ng-model="setting.userInfo.type" required>
+                    </ion-item>-->
+                    <ion-item class="item item-input item-stacked-label">
+                        <span class="input-label fb">{{setting.translation.email}}</span>
+                        <input name="personEmail" required type="email" placeholder="E-mail" ng-model="setting.userInfo.email">
+                        <div class="assertive" ng-show="setForm.personEmail.$dirty && setForm.personEmail.$invalid">
+                            <small ng-show="setForm.personEmail.$error.required">{{setting.translation.emailError}}</small>
+                            <small ng-show="setForm.personEmail.$error.email">{{setting.translation.emailError}}</small>
+                        </div>
+                    </ion-item>
+                </ion-list>
+            </ion-content>
+            <ion-tabs>
+                <button class="button button-clear blue al ml5" ng-click="setting.cancel()">
+                    <span class="button button-clear blue">{{setting.translation.cancel}}</span>
+                </button>
+                <button class="button button-clear blue ar mr5" ng-click="setting.save()" ng-disabled="setForm.$invalid">
+                    <span class="button button-clear blue">{{setting.translation.ok}}</span>
+                </button>
+            </ion-tabs>
+        </form>
+    </ion-nav-view>
+</div>
+<script id="setting-pictures-add.html" type="text/ng-template">
+    <ion-popover-view>
+        <ul>
+            <li class="item" ng-click="setting.addPictures(0)">
+                <span>{{setting.translation.takePhoto}}</span>
+            </li>
+            <li class="item" ng-click="setting.addPictures(1)">
+                <span>{{setting.translation.choosePhoto}}</span>
+            </li>
+        </ul>
+    </ion-popover-view>
+</script>

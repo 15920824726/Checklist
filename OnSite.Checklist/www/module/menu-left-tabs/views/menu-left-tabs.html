@@ -1,0 +1,27 @@
+<div class="nav-side">
+    <header class="lheader">
+        <div class="search-header" id="search-header" ng-class="tab.showSearch?'hide':''" ng-if="!tab.showSearch">
+            <img ng-src="{{tab.userInfo.url}}" data-ui-sref="setting">
+            <span class="pl20"> {{tab.userInfo.name}}</span>
+            <div class="ar mr15">
+                <button menu-btn posn="left" class="button-clear fr" ng-if="clientWidth">
+                    <i class="icon ion-navicon"></i>
+                </button>
+                <button class="button-clear fr" ng-click="tab.showSearch=!tab.showSearch;tab.clearItemSearch()" ng-if="!tab.disableSearch">
+                    <i class="icon ion-ios-search"></i>
+                </button>   
+                
+            </div>
+        </div>
+        <div class="search-bar item-input-inset" id="search-bar" ng-class="tab.showSearch?'active':''">
+            <label class="item-input-wrapper pr0" id="search-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="{{tab.translation.search}}" ng-model="menu.query" ng-change="tab.search(menu.query)">
+                <label class="p10" ng-click="tab.clearSearch();tab.clearItemSearch()">
+                    <i class="icon ion-android-cancel"></i>
+                </label>
+            </label>
+        </div>
+    </header>
+    <ion-nav-view animation="slide-left-right" name="list"></ion-nav-view>
+</div>

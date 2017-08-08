@@ -1,0 +1,14 @@
+<ion-side-menu class="main-left" id="mainLeft" width="clientWidth">
+    <ion-nav-view animation="slide-left-right" name="menu"></ion-nav-view>
+</ion-side-menu>
+<div id="search-results" ng-class="menu.query&&menu.itemSearch?'active':''">
+    <h4>{{menu.translation.items}}</h4>
+    <ion-scroll class="list">
+        <ion-item class="item" ng-repeat="item in menu.searchResult.items" ng-click="menu.goResult(item)">
+            <span>{{item.name}}</span>
+        </ion-item>
+    </ion-scroll>
+</div>
+
+
+ 

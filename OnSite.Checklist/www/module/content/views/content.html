@@ -1,0 +1,24 @@
+<ion-side-menu-content id="content" drag-content="false">
+	<ion-header-bar class="bar-default">  
+	    <menu-btn class="button button-icon ion-navicon" posn='left'></menu-btn>
+	    <div class="title">{{content.title}}</div>
+	</ion-header-bar>
+	<div data-ui-view="desktop">
+		<div class="main-flex" ng-if="content.noItems">
+			<div class="slide-down-to-up">
+				<div class="slider-move">
+					<div class="img-avatar">
+						<img ng-src="{{content.userInfo.url}}">
+					</div>
+					<span class="label-block">{{content.userInfo.name}}</span>
+					<span class="label-block color555" ng-if="content.userInfo.email">{{content.userInfo.email}}</span>
+				</div>
+			</div>
+			<div class="slide-up-to-down">
+				<div class="slider-move">
+					<span class="label-block logo-txt">iTWO 4.0</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</ion-side-menu-content>

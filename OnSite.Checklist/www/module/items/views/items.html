@@ -1,0 +1,52 @@
+<ion-content delegate-handle="content" class="t0">
+	<div class="full-image p10 pb0 clearfix">
+        <label class="pl25">{{item.translation.ok}}</label>
+        <label class="pl25">{{item.translation.fail}}</label>
+        <label class="pl25">{{item.translation.na}}</label>
+        <button class="button button-small button-icon fr" ng-click="item.showReorder=!item.showReorder" ng-show="!item.isFolder&&item.isReorder">
+            <i class="icon ion-ios-drag positive"></i>
+        </button>
+        <button class="button button-small button-icon fr pr10" ng-click="item.isAddForm = !item.isAddForm" ng-hide="item.isFolder">
+            <i class="icon ion-ios-plus-empty positive"></i>
+        </button>
+	</div>
+    <ion-list ng-show="item.isAddForm">
+        <ion-item class="item item-checkbox item-button-right mb0">
+            <div class="checkbox row">
+                <label class="col checkbox-balanced" ng-click="item.setStatus(0)"><input type="checkbox" ng-model="item.status.ok"></label>
+                <label class="col checkbox-assertive" ng-click="item.setStatus(1)"><input type="checkbox" ng-model="item.status.fail"></label>
+                <label class="col checkbox-stable" ng-click="item.setStatus(2)"><input type="checkbox" ng-model="item.status.na"></label>
+            </div>
+            <label class="mt0 pr35 pb0 item-input ">
+                <form name="itemForm" class="w100p ml35">
+                    <input type="text" placeholder="{{item.translation.addItem}}" ng-model="item.name" ng-enter="item.add()" required>
+                </form>
+            </label>
+            <button class="button button-small positive nbg mt5 mr35 pr15" menu-btn posn="right" act="open" ng-click="item.add()" ng-disabled="itemForm.$invalid">{{item.translation.ok}}</button>
+            <button class="button button-icon ion-android-cancel mt5 pt5" ng-click="item.isAddForm = !item.isAddForm;item.name=''"></button>
+        </ion-item>
+    </ion-list>
+	<ion-list class="list" show-reorder="item.showReorder" show-reorder="true">
+        <ion-item id="i{{data.order}}" class="item item-checkbox enable-pointer-events item-icon-right"
+            ng-class="item.activeId==data.id?'selected':''" ng-repeat="data in item.list"
+            menu-btn posn="right" act="open" on-finish-render ng-click="item.toggleMenu(data)">
+        		<div class="checkbox row" ng-click="$event.stopPropagation()">
+                    <label class="col checkbox-balanced" ng-click="item.updateStatus(0,data)"><input type="checkbox" ng-model="data.ok"></label>
+                    <label class="col checkbox-assertive" ng-click="item.updateStatus(1,data)"><input type="checkbox" ng-model="data.fail"></label>
+                    <label class="col checkbox-stable" ng-click="item.updateStatus(2,data)"><input type="checkbox" ng-model="data.na"></label>
+                </div>
+            <label class="pt5 pb0 item-input ">
+                <span ng-show="!item.isEdit||item.editId != data.id" class="ml20" ng-class="item.search.id==data.id?'active':''">{{data.name}}</span>
+                <input type="text" class="ml20" ng-model="data.name" ng-if="item.isEdit&&item.editId == data.id" ng-click="$event.stopPropagation()">
+            </label>
+            <div class="icon">
+                <img ng-if="data.hasFile" ng-src="{{imgData.file}}" width="25">
+                <img ng-if="data.hasImg" class="ml10" ng-src="{{imgData.img}}" width="25">
+                <img ng-if="data.note" class="ml10" ng-src="{{imgData.note}}" width="25">
+            </div>
+            <ion-option-button menu-btn posn="right" act="close" class="button-assertive" ng-click="item.del(data.id)">{{item.translation.delete}}</ion-option-button>
+            <ion-option-button class="button-positive" ng-click="item.edit(data.id)">{{item.editText}}</ion-option-button>
+            <ion-reorder-button class="ion-navicon" on-reorder="item.move(data, $fromIndex, $toIndex)"></ion-reorder-button>
+        </ion-item>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,62 @@
+<div class="bar bar-header bar-light">
+	<div class="title">{{currentProject.name}} {{list.translation.checklists}}</div>
+	<button class="button button-icon ion-ios-arrow-right" data-ui-sref="projects" ng-click="list.resetData();tab.clearSearch()"></button>
+</div>
+<!-- menu -->
+<ion-content class="menu-list has-header has-tabs" ng-show="!menu.query" delegate-handle="menu" overflow-scroll="{{window.cordova?true:false}}">
+	<ion-list class="enable-pointer-events" 
+		show-delete="list.isEdit" show-reorder="list.isEdit" 
+		ng-class="list.isEdit?'list-edit':''">
+        <ion-item id="m{{$index}}" class="item-icon-left item-icon-right"
+        		ng-class="(item.folderId?'pl10'+(item.isOpen?'':' hide'):'')+(item.isActive?' selected':'')"
+        		ng-repeat="item in list.menuList track by $index"
+        		ng-click="list.selectItem(item);tab.clearSearch()">
+            <i class="icon ion-ios-{{item.folderId?'list':'folder'}}-outline"></i>
+            <span ng-if="!list.isEdit">{{item.name}}</span>
+            <input ng-if="list.isEdit" type="text" ng-model="item.name" ng-change="list.update(item)">
+            <i class="icon ion-ios-arrow-{{item.isOpen?'down':'right'}}" ng-if="item.hasChild" ng-click="list.clickItem(item,null,$event)"></i>
+            <ion-delete-button class="ion-minus-circled" ng-click="list.del(item)"></ion-delete-button>
+			<ion-reorder-button class="ion-navicon" on-reorder="list.move(item, $fromIndex, $toIndex)"></ion-reorder-button>
+        </ion-item>
+ 	</ion-list>
+</ion-content>
+<!--search list-->
+<ion-content class="menu-list has-header has-tabs" ng-show="menu.query">
+	<ion-list class="enable-pointer-events" 
+		show-delete="list.isEdit" show-reorder="list.isEdit" 
+		ng-class="list.isEdit?'list-edit':''">
+        <ion-item class="item-icon-left item-icon-right"
+        		ng-class="(item.folderId?'pl10'+(item.isOpen?'':' hide'):'')+(item.isActive?' selected':'')"
+        		ng-repeat="item in list.searchList track by $index"
+        		ng-click="list.selectItem(item,true);menu.itemSearch=false">
+            <i class="icon ion-ios-{{item.folderId?'list':'folder'}}-outline"></i>
+            <span ng-if="!list.isEdit" ng-class="menu.query&&item.search?'active':''">{{item.name}}</span>
+            <input ng-if="list.isEdit" type="text" ng-model="item.name" ng-change="list.update(item,true)">
+            <i class="icon ion-ios-arrow-{{item.isOpen?'down':'right'}}" ng-if="item.hasChild" ng-click="list.clickItem(item,true,$event)"></i>
+            <ion-delete-button class="ion-minus-circled" ng-click="list.del(item,true)"></ion-delete-button>
+        </ion-item>
+ 	</ion-list>
+</ion-content>
+<ion-tabs id="listsTab">
+	<div ng-if="list.isEdit" class="isEdit">
+		<div class="button button-clear ar mr5" ng-click="list.save();tab.disableSearch=false">
+			<span class="blue">{{list.translation.ok}}</span>
+		</div>
+	</div>
+	<div ng-if="!list.isEdit" class="noEdit">
+		<ion-tab icon="ion-ios-upload-outline" ng-click="list.goShare()"></ion-tab>
+		<ion-tab icon="ion-ios-download-outline"></ion-tab>
+		<ion-tab icon="ion-ios-compose-outline" ng-click="list.edit();tab.clearSearch();tab.disableSearch=true" ng-if="!!list.menuList.length"></ion-tab>
+        <ion-tab icon="ion-ios-plus-empty" ng-click="list.openPopover($event)"></ion-tab>
+	</div>
+</ion-tabs>
+
+<script id="lists-add.html" type="text/ng-template">
+    <ion-popover-view>
+	    <ul>
+     		<li class="item" ng-click="list.add(0)">{{list.translation.addFolder}}</li>
+     		<li class="item" ng-click="list.add(1)">{{list.translation.addChecklists}}</li>
+	    </ul>
+    </ion-popover-view>
+</script> 
+ 

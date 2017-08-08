@@ -1,0 +1,10 @@
+app.scss           import导入scss文件
+_button.scss       按钮样式
+_common.scss       基础通用样式
+_component.scss    组件样式
+_function.scss     函数式自定义样式
+_mixin.scss        混合器
+_reset.scss        关于第三方插件的样式重写
+_table.scss        table样式
+_style.scss        存放应用自身的样式
+_variables.scss    存放scss变量，全局常用变量定义文件

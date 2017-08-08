@@ -1,0 +1,23 @@
+<div class="nav-side">
+    <form name="projectInvalid">
+	<div class="bar">
+		<button class="button button-icon ion-ios-arrow-left" data-ui-sref="projects"></button>
+		<div class="title">{{translation.newProject}}</div>
+	</div>
+	<ion-content class="menu-list has-header has-tabs">
+		<ion-list>
+			<ion-item class="item item-input">
+				<input id="projectName" type="text" placeholder="{{translation.projectName}}" ng-model="data.name" required>
+			</ion-item>
+		</ion-list>
+    </ion-content>
+    <ion-tabs>
+        <div class="al button button-clear blue" data-ui-sref="projects">
+            {{translation.cancel}}
+        </div>
+        <div class="button button-clear ar mr5" ng-click="add(data.name)" ng-disabled="projectInvalid.$invalid">
+            <span class="blue">{{translation.ok}}</span>
+        </div>
+    </ion-tabs>
+    </form>
+</div>

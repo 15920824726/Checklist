@@ -1,0 +1,28 @@
+<div class="nav-side">
+    <form name="listInvalid">
+	<div class="bar">
+		<button class="button button-icon ion-ios-arrow-left" data-ui-sref="lists"></button>
+		<div class="title">{{translation.newChecklists}}</div>
+	</div>
+	<ion-content class="menu-list has-header has-tabs">
+		<ion-list>
+			<ion-item class="item item-input">
+				<input id="listName" type="text" placeholder="{{translation.checklistsName}}" ng-model="data.name" required>
+			</ion-item>
+			<ion-item class="item item-select" data-tap-disabled="true">
+				<label>{{translation.folder}}</label>
+				<select ng-options="item.id as item.name for item in folders" ng-init="data.folderId=folders[0].id" ng-model="data.folderId">
+				</select>
+			</ion-item>
+		</ion-list>
+    </ion-content>
+    <ion-tabs>
+        <div class="button button-clear blue al" data-ui-sref="lists">
+			{{translation.cancel}}
+        </div>
+        <div class="button button-clear ar mr5" ng-click="add()" ng-disabled="listInvalid.$invalid">
+            <span class="blue">{{translation.ok}}</span>
+        </div>
+    </ion-tabs>
+    </form>
+</div>

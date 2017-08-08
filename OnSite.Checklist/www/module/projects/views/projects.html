@@ -1,0 +1,48 @@
+<div class="bar">
+    <button class="button button-icon ion-ios-arrow-left" ui-sref="lists" ng-click="tab.clearSearch();project.isEdit=false"></button>
+    <div class="title">{{project.translation.projects}}</div>
+</div>
+<ion-content class="menu-list has-header has-tabs" delegate-handle="menu" ng-show="!menu.query">
+    <ion-list class="enable-pointer-events" show-delete="project.isEdit" show-reorder="project.isEdit">
+        <ion-item id="p{{$index}}" class="item" ng-class="!project.isEdit?'item-icon-left':'item-edit'" 
+            ng-repeat="item in project.list | orderBy: 'order' track by $index" ng-click="project.activeProject(item)">
+            <div ng-if="!project.isEdit">
+                <span>{{item.name}}</span>
+                <i class="icon ion-stats-bars"></i>
+                <div class="act-mark" ng-if="currentProject.id==item.id"><i class="ion-ios-checkmark balanced"></i></div>
+            </div>
+            <input ng-if="project.isEdit" type="text" ng-model="item.name" ng-change="project.update(item)">
+            <ion-delete-button class="ion-minus-circled" ng-click="project.del(item)"></ion-delete-button>
+            <ion-reorder-button class="ion-navicon" on-reorder="project.move(item, $fromIndex, $toIndex)"></ion-reorder-button>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<!--search list-->
+<ion-content class="menu-list has-header has-tabs" delegate-handle="menu" ng-show="menu.query">
+    <ion-list class="enable-pointer-events" show-delete="project.isEdit" show-reorder="project.isEdit">
+        <ion-item id="p{{$index}}" class="item" ng-class="!project.isEdit?'item-icon-left':'item-edit'"
+                  ng-repeat="item in project.searchLists | orderBy: 'order' track by $index" ng-click="project.activeProject(item)">
+            <div ng-if="!project.isEdit">
+                <span class="active">{{item.name}}</span>
+                <i class="icon ion-stats-bars"></i>
+                <div class="act-mark" ng-if="currentProject.id==item.id"><i class="ion-ios-checkmark balanced"></i></div>
+            </div>
+            <input ng-if="project.isEdit" type="text" ng-model="item.name" ng-change="project.update(item)">
+            <ion-delete-button class="ion-minus-circled" ng-click="project.del(item)"></ion-delete-button>
+            <ion-reorder-button class="ion-navicon" on-reorder="project.move(item, $fromIndex, $toIndex)"></ion-reorder-button>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<ion-tabs>
+        <div ng-if="project.isEdit">
+            <div class="button button-clear ar mr5" ng-click="project.save();tab.disableSearch=false">
+                <span class="blue">{{project.translation.ok}}</span>
+            </div>
+        </div>
+    <div ng-if="!project.isEdit">
+        <ion-tab icon="ion-ios-plus-empty" class="al ml15" ng-click="project.add()"></ion-tab>
+        <button class="button button-clear ar mr5 blue" ng-click="project.isEdit=!project.isEdit;tab.disableSearch=true" ng-if="project.list.length">
+            {{project.translation.edit}}
+        </button>
+    </div>
+</ion-tabs>

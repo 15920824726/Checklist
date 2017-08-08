@@ -1,0 +1,103 @@
+{
+  "common": {
+    "appName": "Checklists",
+    "search": "Search",
+    "addFolder": "Add Folder",
+    "checklists": "Checklists",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "addChecklists": "Add Checklists",
+    "items": "Items",
+    "edit": "Edit",
+    "delete": "Delete",
+    "detected": "Detected",
+    "inProgress": "In-progress",
+    "completed": "Completed",
+    "rejected": "Rejected",
+    "information": "Information",
+    "title": "Title",
+    "code": "Code",
+    "status": "Status",
+    "detectedBy": "Detected by",
+    "severity": "Severity",
+    "location": "Location",
+    "save": "Save",
+    "attachments": "Attachments",
+    "add": "Add",
+    "takePhoto": "Take Photo",
+    "choosePhoto": "Choose from Library",
+    "projects": "Projects",
+    "email": "E-mail",
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "success": "Success",
+    "project": "Project",
+    "date": "Date",
+    "maxScale": "Maximum zoom in level reached",
+    "minScale": "Maximum zoom out level reached",
+    "fail":"Fail",
+    "na":"NA"
+  },
+
+  "lists": {
+    "newChecklists": "New Checklists",
+    "newFolder": "New Folder",
+    "folder": "Folder:",
+    "folderName": "Folder Name",
+    "checklistsName": "Checklists Name"
+
+  },
+
+  "items": {
+    "addItem": "Add Item to selected list",
+    "selectList": "Please select a list."
+  },
+
+  "checklistsAttr": {
+    "checklistsRemovalCosts": "Checklists removal costs",
+    "AddPicture": "Add a picture",
+    "personInCharge": "Person in charge",
+    "addNote": "Add a note",
+    "editNote": "Edit a note"
+  },
+
+  "projects": {
+    "newProject": "New Project",
+    "projectName": "Project name"
+  },
+
+  "setting": {
+    "emailError": "Enter a valid email."
+  },
+
+  "export": {
+    "upload": "Upload",
+    "format": "Format",
+    "uploadTo": "Upload to",
+    "select": "Select",
+    "pdfSubject": "Onsite Checklists PDF",
+    "pdfBody": "Checklists List"
+  },
+
+  "error": {
+    "emailClient": "Email client is not available.",
+    "name2msg": "{{name}}:{{msg}}",
+    "saveFile": "Failed to save {{name}}.",
+    "duplicateKey": "[{{key}}] already exists."
+  },
+
+  "warning": {
+    "noPrj": "Please create a project first.",
+    "noFolder": "Please create a folder first."
+  },
+  
+  "pdf": {
+    "myChecklists": "My Checklists",
+    "observer": "Observer",
+    "export": "Export",
+    "noNote": "No notes added",
+    "noImg": "No images added",
+    "noFile": "No files added"
+  }
+}

@@ -1,0 +1,21 @@
+<div class="bar row row-no-padding">
+	<div class="col20 pt5 tc col-center">
+    	<button class="button button-icon ion-android-cancel" ng-click="goHome()"></button>
+    </div>
+    <div class="col30 pt5 tc col-center">
+    	<button class="button button-icon ion-ios-arrow-left" ng-click="goPrevious()"></button>
+    <button class="button button-icon">{{pageToDisplay +'/' + pageCount}}</button>	
+    	<button class="button button-icon ion-ios-arrow-right" ng-click="goNext()"></button>
+    </div>
+    <div class="col30 pt5 tc col-center">
+    	<button class="button button-icon ion-ios-plus-outline" ng-click="pdfZoomIn()"></button>
+    	<button ng-if="!clientWidth" class="button button-icon" ng-click="pdfFit()">100%</button>
+    	<button class="button button-icon ion-ios-minus-outline" ng-click="pdfZoomOut()"></button>
+    </div>
+    <div class="col20 pt5 tc col-center">
+    	<button class="button button-icon icon-center ion-email" ng-click="sendEmail()"></button>
+    </div>
+</div>
+<ion-content>
+	<canvas id="pdf"></canvas>
+</ion-content>

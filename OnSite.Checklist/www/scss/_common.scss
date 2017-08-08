@@ -1,0 +1,147 @@
+/*
+ * style of background 
+ */
+.nbg {
+  background-color: transparent!important;
+}
+
+/*
+ * style of border 
+ */
+@for $i from 1 through 5 {
+  .nb#{nth($posn-ab,$i)} {
+    @if $i == 1 {
+        border#{nth($posn-lst,$i)}: none!important;
+    } @else {
+        border-#{nth($posn-lst,$i)}: none!important;
+    }
+  }
+}
+
+/*
+ * style of padding 
+ */
+@for $i from 0 through 4 {
+  .p#{$gap*$i} {
+    padding: px2rem($gap*$i)!important;
+  }
+}
+@for $p from 2 through 5 {
+  @for $i from 0 through 10 {
+    .p#{nth($posn-ab,$p)}#{$gap*$i} {
+      padding-#{nth($posn-lst,$p)}: px2rem($gap*$i)!important;
+    }
+  }
+}
+
+/*
+ * style of margin 
+ */
+.m0 {
+  margin: 0!important;
+}
+@for $p from 2 through 5 {
+  @for $i from 0 through 7 {
+    .m#{nth($posn-ab,$p)}#{$gap*$i} {
+      margin-#{nth($posn-lst,$p)}: px2rem($gap*$i)!important;
+    }
+  }
+}
+
+/*
+ * style of position
+ */
+.pa {
+  position: absolute!important;
+}
+.ps {
+  position: static!important;
+}
+.pr {
+  position: relative!important;
+}
+@for $p from 2 through 5 {
+  @for $i from 0 through 6 {
+    .#{nth($posn-ab,$p)}#{$gap*$i} {
+      #{nth($posn-lst,$p)}: px2rem($gap*$i)!important;
+    }
+  }
+}
+
+/*
+ * style of float
+ */
+.fl{
+  float: left!important;
+}
+.fr{
+  float: right!important;
+}
+
+/*
+ * style of absolute position
+ */
+.al{
+  position: absolute;
+  left: 0;
+}
+.ar{
+  position: absolute;
+  right: 0;
+}
+
+/*
+ * flex
+ */
+.rw {
+  flex-flow: row wrap;
+}
+
+/*
+ * style of text align
+ */
+.tl{
+  text-align: left!important;
+}
+.tc{
+  text-align: center!important;
+}
+.tr{
+  text-align: right!important;
+}
+.vm {
+  vertical-align: middle!important;
+}
+.vbl{
+  vertical-align: baseline!important;
+}
+.vt{
+  vertical-align: top!important;
+}
+.vb{
+  vertical-align: bottom!important;
+}
+.text-ellipsis {
+  overflow: hidden!important;
+  text-overflow: ellipsis!important;
+}
+
+/*
+ * style of font-size
+ */
+@for $i from 0 through 9 {
+  .f#{$f+$i*2} {
+    font-size: px2rem($f+$i*2)!important;
+  }
+}
+
+/*
+ * style of color
+ */
+.blue {
+  color: $nblue!important;
+}
+
+.w100p{
+  width:100%;
+}

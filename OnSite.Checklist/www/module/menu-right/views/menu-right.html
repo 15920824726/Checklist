@@ -1,0 +1,65 @@
+<ion-side-menu side="right" width="clientWidth">
+    <ion-content class="nav-side">
+        <header class="item item-icon-left text-ellipsis" menu-btn posn="right" act="close">
+            <i class="icon ion-ios-arrow-right"></i>
+            {{currtentName}}
+        </header>
+        <ion-list class="item-attachment">
+            <ion-item class="item item-icon-left p0 m0 nbb" ng-show="isShowAttachment">
+                <div class="item item-icon-left nb" ng-click="showNoteForm(1)">
+                    <i class="icon 	ion-ios-chatbubble-outline"></i>
+                    {{note.title}}
+                </div>
+                <div class="item nbb" ng-show="note.text&&!isShowNote">
+                    {{note.text}}
+                </div>
+                <div class="card p0 m0 nb" ng-show="isShowNote">
+                    <div class="item item-text-wrap nb">
+                        <form name="noteForm">
+                            <textarea class="pl35 pt15 w100p" placeholder="{{translation.addNote}}" ng-model="note.text" ></textarea>
+                        </form>
+                    </div>
+                    <div class="item item-divider nb">
+                        <button class="button blue fl nbg" ng-click="showNoteForm(0)">
+                            {{translation.cancel}}
+                        </button>
+                        <button class="button blue fr button-clear" ng-click="addNote()" ng-disabled="noteForm.$invalid">
+                             {{translation.save}}
+                        </button>
+                    </div>
+                </div>
+            </ion-item>
+            <!--<ion-item class="item item-icon-left p0 m0 nbb" ng-show="isShowAttachment">-->
+                <!--<div class="item item-icon-left nb" ng-click="addFile()">-->
+                    <!--<i class="icon ion-ios-upload-outline"></i>-->
+                    <!--Add a file-->
+                <!--</div>-->
+            <!--</ion-item>-->
+            <div class="item p0 m0" ng-show="isShowAttachment">
+                <div class="item item-icon-left nb" ng-click="openPopover($event)">
+                    <i class="icon ion-ios-camera-outline"></i>
+                     {{translation.AddPicture}}
+                </div>
+                <ion-list class="list nb">
+                    <ion-item class="item item-checkbox" ng-repeat="item in pictureSrcs track by $index" ng-click="showPicture(item.url)">
+                        <div class="pt10 pb10"><img ng-src="{{item.url}}" width="120"></div>
+                        <ion-option-button class="button-assertive" ng-click="delPicture(item.id,item.fileName)">{{translation.delete}}</ion-option-button>
+                    </ion-item>
+                </ion-list>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-side-menu>
+
+<script id="pictures-add.html" type="text/ng-template">
+    <ion-popover-view>
+        <ul>
+            <li class="item" ng-click="addPictures(0)">
+                <span>{{translation.takePhoto}}</span>
+            </li>
+            <li class="item" ng-click="addPictures(1)">
+                <span>{{translation.choosePhoto}}</span>
+            </li>
+        </ul>
+    </ion-popover-view>
+</script>

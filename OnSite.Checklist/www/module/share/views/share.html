@@ -1,0 +1,25 @@
+<div class="bar p0" ng-init="showSearch=false">
+	<ion-checkbox class="nb pl50 nbg" ng-click="share.selectAll()" ng-model="share.all"></ion-checkbox>
+    <div class="title blue">{{share.translation.select}} {{share.currentProject.name}}</div>
+</div>
+<ion-content class="menu-list has-header has-tabs">
+    <ion-list>
+        <div ng-repeat="item in share.menuList track by $index"
+             class="item item-icon-right pt0 pb0 pl0"
+             ng-class="item.folderId?(item.isOpen?'':' hide')+(item.isActive?' selected':''):''"
+             data-ng-click="share.clickItem(item)">
+            <ion-checkbox class="p0 pl50 nb"
+                ng-model="item.checked" ng-checked="item.checked" ng-click="share.selectItem(item);$event.stopPropagation()">
+                <ion-item class="ml15 item item-icon-left nb">
+                    <i class="icon ion-ios-{{item.folderId?'list':'folder'}}-outline"></i>
+                    <span>{{item.name}}</span>
+                </ion-item>
+            </ion-checkbox>
+            <i class="icon ion-ios-arrow-{{item.isOpen?'down':'right'}}" ng-if="item.hasChild"></i>
+        </div>
+    </ion-list>
+</ion-content>
+<ion-tabs>
+    <button class="col-50 blue button" ng-click="share.cancel()">{{share.translation.cancel}}</button>
+    <button class="col-50 blue button" ng-click="share.goUpload()" ng-disabled="!share.selectOne">{{share.translation.ok}}</button>
+</ion-tabs>

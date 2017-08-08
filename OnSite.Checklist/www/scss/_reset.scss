@@ -1,0 +1,55 @@
+body {
+    color: #000;
+}
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-style: normal;
+}
+a,
+ul li {
+    cursor: pointer;
+}
+ul, ol {
+    list-style: none outside;
+}
+
+/* ionic css reset */
+.popover {
+  width: auto;
+  height: auto;
+  .item {
+    background-color: transparent;
+  }
+}
+
+.item.active,
+.item.activated,
+.item-complex.active .item-content,
+.item-complex.activated .item-content,
+.item .item-content.active,
+.item .item-content.activated {
+  border-color: $lablue;
+  background-color: $lablue; }
+  .item.active.item-complex > .item-content,
+  .item.activated.item-complex > .item-content,
+  .item-complex.active .item-content.item-complex > .item-content,
+  .item-complex.activated .item-content.item-complex > .item-content,
+  .item .item-content.active.item-complex > .item-content,
+  .item .item-content.activated.item-complex > .item-content {
+    border-color: $lablue;
+    background-color: $lablue; }
+    
+//.checkbox input:checked+.checkbox-icon:before, .checkbox input:checked:before {
+//    background: $hblue;
+//    border-color: $hblue;
+//}
+
+/* toast css reset */   
+.toast-success {
+  background-color: $hblue;
+}
+.toast-bottom-center {
+  bottom: px2rem(60);
+}

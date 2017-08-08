@@ -1,0 +1,36 @@
+<div class="nav-side" ng-init="showSearch=false">
+	<div class="bar">
+		<a class="button button-icon ion-ios-arrow-left" ng-click="save.back()"></a>
+		<div class="title blue">{{save.translation.upload}}</div>
+	</div>
+	<ion-content class="menu-list has-header has-tabs" ng-init="formatIsOpen=true;diskIsOpen=true">
+		<div class="item item-icon-right border-top-none" ng-click="formatIsOpen=!formatIsOpen">
+			<span>{{save.translation.format}}</span>
+			<i class="icon ion-ios-arrow-{{formatIsOpen?'down':'right'}}"></i>
+		</div>
+		<ion-radio name="disk" class="item-accordion" ng-repeat="formatItem in save.formatList track by $index" 
+			ng-show="formatIsOpen" checked="save.formatItem.checked"
+			ng-value="formatItem.formatId" ng-model="save.format.formatId">
+			<div class="item-icon-left">
+				<i class="icon {{formatItem.icon}}"></i>
+				<span>{{formatItem.name}}</span>
+			</div>
+		</ion-radio>
+		<div class="item item-icon-right " ng-click="diskIsOpen=!diskIsOpen">
+			<span>{{save.translation.uploadTo}}</span>
+			<i class="icon ion-ios-arrow-{{diskIsOpen?'down':'right'}}"></i>
+		</div>
+		<ion-radio name="format" class="item-accordion" ng-repeat="diskItem in save.diskList track by $index" 
+			ng-show="diskIsOpen" checked="save.diskItem.checked"
+			ng-value="diskItem.diskId" ng-model="save.disk.diskId">
+			<div class="item-icon-left">
+				<i class="icon {{diskItem.icon}}"></i>
+				<span>{{diskItem.name}}</span>
+			</div>
+		</ion-radio>
+	</ion-content>
+	<ion-tabs>
+		<button class="col-50 blue button" ng-click="save.cancel()">{{save.translation.cancel}}</button>
+		<button class="col-50 blue button" ng-click="save.upload()" ng-disabled="save.hasUpload">{{save.translation.ok}}</button>
+	</ion-tabs>
+</div>
